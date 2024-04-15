@@ -67,6 +67,8 @@ qrcode.callback = (respuesta) => {
 
     videoElement.setAttribute('src', `${respuesta}`);
     videoElement.setAttribute('autoplay',"");
+    videoElement.setAttribute('muted',"");
+
     videoElement.classList.add('video')
     const muestraDiv = document.getElementById('muestra');
     const titulo = document.querySelector('.titulo');
@@ -76,6 +78,9 @@ qrcode.callback = (respuesta) => {
       location.reload(event);
     });
 
+    videoElement.onplaying = function(){
+      videoElement.muted = false;
+    }
   }
 };
 window.addEventListener('load', (e) => {
